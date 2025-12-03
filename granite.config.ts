@@ -1,7 +1,7 @@
 import { defineConfig } from "@apps-in-toss/web-framework/config";
 
 export default defineConfig({
-    appName: "와삭상점", // 앱인토스 콘솔에서 설정한 앱 이름과 일치해야 함
+    appName: "wasak-shop", // 앱인토스 콘솔에서 설정한 앱 이름과 일치해야 함
     brand: {
         displayName: "와삭상점", // 화면에 노출될 앱의 한글 이름
         primaryColor: "#FF6B6B", // 과일 테마에 맞는 색상 (빨간색 계열)
@@ -9,10 +9,10 @@ export default defineConfig({
         bridgeColorMode: "basic",
     },
     web: {
-        host: "localhost", // 앱 내 웹뷰에 사용될 host
+        host: "192.168.45.154", // 앱 내 웹뷰에 사용될 host
         port: 5173,
         commands: {
-            dev: "vite", // 개발 모드 실행
+            dev: "vite --host", // 개발 모드 실행
             build: "tsc && vite build", // 빌드 명령어
         },
     },

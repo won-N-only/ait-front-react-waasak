@@ -18,8 +18,9 @@ export function Test({
 }: TestProps) {
     const currentQ = QUESTIONS[currentQuestionIndex];
 
+    // 질문 전환 시 전체를 다시 마운트하지 않고 부드럽게 넘어가도록 애니메이션 최소화
     return (
-        <section className="space-y-8 animate-scale-in">
+        <section className="space-y-8">
             <div className="text-center space-y-3">
                 <div className="inline-block px-4 py-1.5 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full text-sm font-semibold text-orange-700">
                     {currentQuestionIndex + 1} / {QUESTIONS.length}
@@ -29,7 +30,7 @@ export function Test({
 
             <div className="space-y-6">
                 <div className="p-8 border-2 border-gray-100 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg">
-                    <div className="text-xl font-semibold mb-6 text-center text-gray-800 leading-relaxed">
+                    <div className="text-xl font-semibold mb-6 text-center text-gray-800 leading-relaxed min-h-16">
                         {currentQ.q}
                     </div>
                     <div className="space-y-3">
@@ -37,7 +38,7 @@ export function Test({
                             const isSelected = answers[currentQ.id] === idx;
                             return (
                                 <Button
-                                    key={idx}
+                                    key={`${currentQ.id}-${idx}`}
                                     size="large"
                                     variant={isSelected ? "fill" : "weak"}
                                     color={isSelected ? "primary" : "dark"}
@@ -64,7 +65,7 @@ export function Test({
                         className="transition-all active:scale-[0.96] active:opacity-80 hover:bg-gray-100 rounded-lg active:ring-2 active:ring-gray-400 active:ring-offset-2 active:border-2 active:border-gray-300"
                         onClick={currentQuestionIndex === 0 ? onResetToHome : onPrevQuestion}
                     >
-                        {currentQuestionIndex === 0 ? "🏠 홈으로" : "← 이전"}
+                        {currentQuestionIndex === 0 ? "홈으로" : "← 이전"}
                     </Button>
 
                     <div className="flex gap-2">

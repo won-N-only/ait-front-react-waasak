@@ -8,9 +8,10 @@ interface ResultProps {
     mbti: MBTIType;
     fruitKey: string;
     onNavigateToSeasonal: () => void;
+    onRestart: () => void;
 }
 
-export function Result({ mbti, fruitKey, onNavigateToSeasonal }: ResultProps) {
+export function Result({ mbti, fruitKey, onNavigateToSeasonal, onRestart }: ResultProps) {
     const profile = MBTI_PROFILES[mbti];
     const fruit = FRUITS[fruitKey];
     const compatibleFruit = FRUITS[profile.compatibleFruit.fruitKey];
@@ -41,7 +42,6 @@ export function Result({ mbti, fruitKey, onNavigateToSeasonal }: ResultProps) {
                         </p>
                     ))}
                 </div>
-
                 <div className="space-y-4 pt-6">
                     <h3 className="text-2xl font-bold text-gray-800 text-center">
                         나와 잘 맞는 과일은?
@@ -64,8 +64,8 @@ export function Result({ mbti, fruitKey, onNavigateToSeasonal }: ResultProps) {
                         </div>
                     </div>
                 </div>
-
-                <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
+                {/* 버튼 사이 여백을 조금 넓히고, 버튼 너비를 통일 */}
+                <div className="flex flex-col items-stretch space-y-2 pt-4 max-w-xs mx-auto w-full">
                     <Button
                         as="a"
                         href={getPurchaseUrl(fruitKey)}
@@ -74,17 +74,25 @@ export function Result({ mbti, fruitKey, onNavigateToSeasonal }: ResultProps) {
                         size="large"
                         variant="fill"
                         color="danger"
-                        className="transition-all active:scale-[0.96] active:opacity-90 hover:shadow-xl rounded-xl font-semibold active:ring-4 active:ring-red-400 active:ring-offset-2 active:border-2 active:border-red-300"
+                        className="transition-all active:scale-[0.96] active:opacity-90 hover:shadow-xl rounded-xl font-semibold active:ring-4 active:ring-red-400 active:ring-offset-2 active:border-2 active:border-red-300 w-full"
                     >
                         🛒 나랑 꼭 닮은 과일 사러가기
                     </Button>
                     <Button
                         size="large"
                         variant="weak"
-                        className="transition-all active:scale-[0.96] active:opacity-80 hover:bg-gray-100 rounded-xl font-semibold active:ring-2 active:ring-gray-400 active:ring-offset-2 active:border-2 active:border-gray-300"
+                        className="transition-all active:scale-[0.96] active:opacity-80 hover:bg-gray-100 rounded-xl font-semibold active:ring-2 active:ring-gray-400 active:ring-offset-2 active:border-2 active:border-gray-300 w-full"
                         onClick={onNavigateToSeasonal}
                     >
                         🍇 제철 추천 보기
+                    </Button>
+                    <Button
+                        size="large"
+                        variant="weak"
+                        className="transition-all active:scale-[0.96] active:opacity-80 hover:bg-gray-100 rounded-xl font-semibold active:ring-2 active:ring-gray-400 active:ring-offset-2 active:border-2 active:border-gray-300 w-full"
+                        onClick={onRestart}
+                    >
+                        다시 해보기
                     </Button>
                 </div>
                 <div className="text-xs text-gray-400 pt-2 text-center">

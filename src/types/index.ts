@@ -1,6 +1,6 @@
 export type MBTILetter = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
 export type MBTIType = `${"E" | "I"}${"S" | "N"}${"T" | "F"}${"J" | "P"}`;
-export type Page = "home" | "test" | "result" | "seasonal";
+export type Page = "bridge" | "home" | "test" | "result" | "seasonal";
 
 export interface Fruit {
     name: string;

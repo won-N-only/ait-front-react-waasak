@@ -13,13 +13,12 @@ export function Seasonal({ onNavigateToHome }: SeasonalProps) {
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
                     이번 주 제철 추천
                 </h2>
-                <p className="text-gray-500">지금 가장 맛있는 과일들 🍓</p>
+                <p className="text-gray-500">지금 가장 맛있는 과일들 🍊</p>
             </div>
             <div className="grid grid-cols-1 gap-4">
-                {/* 간단한 고정 큐레이션: 3종 */}
                 <SeasonalCard fruitKey="tangerine" />
                 <SeasonalCard fruitKey="mandarin" />
-                <SeasonalCard fruitKey="pear" />
+                <SeasonalCard fruitKey="melon" />
             </div>
             <div className="flex justify-between pt-4">
                 <Button
@@ -28,7 +27,7 @@ export function Seasonal({ onNavigateToHome }: SeasonalProps) {
                     className="transition-all active:scale-[0.96] active:opacity-80 hover:bg-gray-100 rounded-lg active:ring-2 active:ring-gray-400 active:ring-offset-2 active:border-2 active:border-gray-300"
                     onClick={onNavigateToHome}
                 >
-                    🏠 홈으로
+                    홈으로
                 </Button>
                 <Button
                     as="a"

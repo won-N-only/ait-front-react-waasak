@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 전체 페이지 스크롤 방지 */
+}
+
+body {
+  overscroll-behavior: none; /* iOS에서 바운스 스크롤 방지 */
+  -webkit-overflow-scrolling: auto;
+  background-color: #fffbeb; /* 브릿지 배경과 자연스럽게 연결 */
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

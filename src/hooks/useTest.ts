@@ -4,7 +4,7 @@ import type { Page } from "../types";
 import { calcMBTIResult } from "../utils/mbti";
 
 export function useTest() {
-    const [page, setPage] = useState<Page>("home");
+    const [page, setPage] = useState<Page>("bridge");
     const [answers, setAnswers] = useState<Record<number, number>>({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -30,7 +30,7 @@ export function useTest() {
                 // 마지막 질문이면 인덱스는 유지 (useEffect에서 처리)
                 return prevIndex;
             });
-        }, 100); // 약간의 딜레이로 선택 피드백을 보여줌
+        }, 200); // 약간의 딜레이로 선택 피드백을 보여줌
     }, []);
 
     // 마지막 질문에서 모든 답변이 완료되었는지 확인
@@ -46,7 +46,7 @@ export function useTest() {
                     // 약간의 딜레이 후 결과 페이지로 이동
                     setTimeout(() => {
                         setPage("result");
-                    }, 150);
+                    }, 200);
                 } else {
                     setErrorMessage("모든 문항에 답해주세요.");
                     setTimeout(() => setErrorMessage(null), 3000);
@@ -71,6 +71,10 @@ export function useTest() {
         setErrorMessage(null);
     }, []);
 
+    const enterApp = useCallback((): void => {
+        setPage("test");
+    }, []);
+
     const goToPage = useCallback((newPage: Page): void => {
         setPage(newPage);
         setErrorMessage(null);
@@ -89,6 +93,7 @@ export function useTest() {
         prevQuestion,
         resetToHome,
         goToPage,
+        enterApp,
         setCurrentQuestionIndex,
     };
 }

@@ -22,9 +22,6 @@ export function SeasonalCard({ fruitKey }: SeasonalCardProps) {
                 <div className="font-bold text-lg text-gray-800 mb-1">
                     {f.name}
                 </div>
-                <div className="text-sm text-gray-600 leading-relaxed">
-                    {f.desc}
-                </div>
             </div>
             <Button
                 as="a"
